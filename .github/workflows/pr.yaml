@@ -4,7 +4,6 @@ on:
 
 jobs:
   lint:
-    if: github.event_name == 'pull_request'
     name: Lint Image Build Logic
     runs-on: ubuntu-20.04
     steps:
