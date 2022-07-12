@@ -1,7 +1,6 @@
 name: PR
 on:
   pull_request: {}
-  push: {}
 jobs:
   lint:
     name: Lint Image Build Logic
@@ -28,6 +27,7 @@ jobs:
           fi
           echo "::set-output name=VERSION::${version}"
   build-and-validate:
+    if: needs.set-version.outputs.version != 'nothing'
     env:
       PREFLIGHT_VERSION: 1.2.1
       PFLT_DOCKERCONFIG: ~/.docker/config.json
